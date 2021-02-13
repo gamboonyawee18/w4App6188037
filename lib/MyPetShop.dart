@@ -5,6 +5,8 @@ import './Pet.dart';
 
 class MyPetShop extends StatelessWidget {
 
+  int numProduct = 0, totalPrice = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,6 +53,37 @@ class MyPetShop extends StatelessWidget {
       },
     );
 
+    Widget selectButton = TextButton(
+      child: Text("Select"),
+      onPressed: () {
+        Navigator.of(context).pop();
+        if(numProduct > 0){
+          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        }
+        numProduct++;
+        totalPrice += pet.price;
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('${numProduct} pets in your embrace.\t\t฿${totalPrice}'),
+              duration: Duration(days: 365),
+              action: SnackBarAction(
+                label: 'Undo',
+                onPressed: (){
+                  numProduct--;
+                  totalPrice -= pet.price;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${numProduct} pets in your embrace.\t\t฿${totalPrice}'),
+                        duration: Duration(days: 365),
+                      )
+                  );
+                },
+              ),
+            )
+        );
+      },
+    );
+
     // Create AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text(pet.title),
@@ -58,7 +91,16 @@ class MyPetShop extends StatelessWidget {
       scrollable: true,
       actions: [
         backButton,
+        selectButton,
       ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 

@@ -48,4 +48,44 @@ List<Pet> Pets = [
     description:
     "",
   ),
+  Pet(
+    id: 'Ger01',
+    price: 15000,
+    title: "German Shepherd",
+    image: "assets/images/German.jpg",
+    description:
+    "",
+  ),
+  Pet(
+    id: 'Pom01',
+    price: 9500,
+    title: "Pomeranian",
+    image: "assets/images/Pom.jpg",
+    description:
+    "",
+  ),
+  Pet(
+    id: 'Dal01',
+    price: 12000,
+    title: "Dalmatian",
+    image: "assets/images/Dal.jpg",
+    description:
+    "",
+  ),
+  Pet(
+    id: 'Pit01',
+    price: 10000,
+    title: "Pitbull",
+    image: "assets/images/Pit.jpg",
+    description:
+    "",
+  ),
+  Pet(
+    id: 'Cav01',
+    price: 350000,
+    title: "Cavalier King Charles Spaniel",
+    image: "assets/images/Cav.jpg",
+    description:
+    "",
+  ),
 ];
